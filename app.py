@@ -35,7 +35,7 @@ htmlString = f"""
             <body>
             <header>
 
-            <a href=""class="header_title">Berke K. Çetinkaya</a>
+            <a href=""class="header_title">Berke K. Cetinkaya</a>
      
             <a href="" class="header_title">Articles</a>
              
