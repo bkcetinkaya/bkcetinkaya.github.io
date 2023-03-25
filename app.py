@@ -11,49 +11,53 @@ def traverse_directory(directory):
             content = open(path,"rb")
             text = content.read().decode().replace('\n', '<br>')
             content.close()
-            return text,file_name
-
-
-text,file_name = traverse_directory("Articles")
-
-
-file_name_without_suffix = file_name.removesuffix('.txt')
+            create_html(text,file_name)
 
 
 
-print(file_name_without_suffix)
+
+def create_html(text,file_name):
 
 
-htmlString = f""" 
+    file_name_without_suffix = file_name.removesuffix('.txt')
 
-        <!DOCTYPE html>
-            <html>
-            <head>
-                <title>{file_name_without_suffix}</title>
-                <link rel="stylesheet" href="style.css">
-            </head>
-            <body>
-            <header>
 
-            <a href=""class="header_title">Berke K. Cetinkaya</a>
-     
-            <a href="" class="header_title">Articles</a>
-             
-             
-             
-            </header>
-                <div class="h1" >{file_name_without_suffix}</h1> </div>
 
-                <div> <p class="p">{text}</p> </div>
-            </body>
-        </html>
+    print(file_name_without_suffix)
+
+
+    html_string = f""" 
+
+            <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>{file_name_without_suffix}</title>
+                    <link rel="stylesheet" href="style.css">
+                </head>
+                <body>
+                <header>
+
+                <a href=""class="header_title">Berke K. Cetinkaya</a>
         
-            """
+                <a href="" class="header_title">Articles</a>
+                
+                
+                
+                </header>
+                    <div class="h1" >{file_name_without_suffix}</h1> </div>
+
+                    <div> <p class="p">{text}</p> </div>
+                </body>
+            </html>
+            
+                """
 
 
 
 
-html_file = open(file_name_without_suffix+".html","w")
-html_file.write(htmlString)
+    html_file = open(file_name_without_suffix+".html","w")
+    html_file.write(html_string)
 
-html_file.close()
+    html_file.close()
+
+traverse_directory("Articles")
