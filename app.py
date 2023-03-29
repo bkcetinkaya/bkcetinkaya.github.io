@@ -92,3 +92,40 @@ def create_article_page_string():
 
 
 string_to_place = create_article_page_string()
+
+
+def generate_articles_page(links):
+    html_string = f""" 
+
+            <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Articles</title>
+                    <link rel="stylesheet" href="style.css">
+                </head>
+                <body>
+                <header>
+
+                <a href=""class="header_title">Berke K. Cetinkaya</a>
+        
+                <a href="../articles.html" class="header_title">Articles</a>
+                
+                              
+                </header>                   
+                    <div class="article_links"> 
+                    
+                    {links} 
+                    
+                    
+                    </div>
+                </body>
+            </html>
+            
+                """
+
+    html_file = open("Articles.html", "w")
+    html_file.write(html_string)
+
+    html_file.close()
+
+generate_articles_page(string_to_place)
