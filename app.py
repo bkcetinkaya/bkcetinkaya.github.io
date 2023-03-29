@@ -77,8 +77,15 @@ def create_article_page():
 
             html_string = f"""<a href="./generated/{file_name_without_suffix}.html">{file_name_without_suffix}</p>"""
             
+            
             articles.append(html_string)
 
-    print(articles)        
+          
+    string_to_place=""
+
+    for item in articles:
+        string_to_place += "\n" + item 
+    print(string_to_place)    
+
 
 create_article_page()
