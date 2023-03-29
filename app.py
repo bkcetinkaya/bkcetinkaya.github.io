@@ -60,7 +60,9 @@ def create_article_html(text, file_name):
 traverse_directory("Articles")
 
 
-def create_article_page():
+# traverses the generated directory that contains the article html files, and returns the string that contains links to the articles
+
+def create_article_page_string():
 
     articles = []
 
@@ -85,7 +87,8 @@ def create_article_page():
 
     for item in articles:
         string_to_place += "\n" + item 
-    print(string_to_place)    
+    
+    return string_to_place
 
 
-create_article_page()
+string_to_place = create_article_page_string()
