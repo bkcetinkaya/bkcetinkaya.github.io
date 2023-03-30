@@ -25,6 +25,8 @@ jobs:
       run: python app.py
       
     - name: Commit and push changes
+      env:
+          ACCESS_TOKEN: ${{ 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 }}
       run: |
         git config --global user.email "kaancetinkayasf@gmail.com"
         git config --global user.name "bkcetinkaya"
