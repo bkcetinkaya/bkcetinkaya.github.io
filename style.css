@@ -69,6 +69,28 @@ a:hover{
     flex-direction: column;
 }
 
+.container-introduce{
+    margin-top: 35px;
+    margin-bottom: 35px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-introduce p{
+    padding: 15px;
+    font-size: large;
+}
+
+.container-introduce a{
+    padding: 15px;
+    font-size: large;
+    font-weight:bold;
+    color: black;
+}
+
 .article_links{
     height: 100%;
     width: 80%;
