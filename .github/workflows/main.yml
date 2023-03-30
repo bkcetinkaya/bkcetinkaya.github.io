@@ -1,0 +1,25 @@
+name: run python script
+
+on:
+  push:
+  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7.7' # install the python version needed
+          
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          
+          
+      - name: run py
+        run: |
+          python app.py
+          
