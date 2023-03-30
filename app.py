@@ -2,7 +2,7 @@ import os
 
 
 # TO DO
-# Generate the articles.html page with the article titles
+# - 
 
 # traverses the given directory and creates an html file for each txt in the directory
 
@@ -37,15 +37,19 @@ def create_article_html(text, file_name):
                 <body>
                 <header>
 
-                <a href=""class="header_title">Berke K. Cetinkaya</a>
+                <a href="/index.html"class="header_title">Berke K. Cetinkaya</a>
         
                 <a href="../articles.html" class="header_title">Articles</a>
                 
                               
                 </header>
-                    <div class="h1" >{file_name_without_suffix}</h1> </div>
+                <div class="container">
+                <div class="h1" >{file_name_without_suffix}</h1> </div>
 
                     <div> <p class="p">{text}</p> </div>
+                
+                </div>
+                    
                 </body>
             </html>
             
@@ -77,7 +81,7 @@ def create_article_page_string():
             
 
 
-            html_string = f"""<a href="./generated/{file_name_without_suffix}.html">{file_name_without_suffix}</p>"""
+            html_string = f"""<a href="./generated/{file_name_without_suffix}.html">{file_name_without_suffix}</a>"""
             
             
             articles.append(html_string)
@@ -106,18 +110,21 @@ def generate_articles_page(links):
                 <body>
                 <header>
 
-                <a href=""class="header_title">Berke K. Cetinkaya</a>
+                <a href="../index.html"class="header_title">Berke K. Cetinkaya</a>
         
                 <a href="../articles.html" class="header_title">Articles</a>
                 
                               
-                </header>                   
+                </header>
+                <div class="container">
                     <div class="article_links"> 
+                        
+                        {links} 
+                        
+                        
+                        </div>
+                </div>                   
                     
-                    {links} 
-                    
-                    
-                    </div>
                 </body>
             </html>
             
