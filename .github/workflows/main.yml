@@ -22,4 +22,4 @@ jobs:
         python -m pip install --upgrade pip
 
     - name: Run Python file
-      run: python ../file.py
+      run: python ../app.py
