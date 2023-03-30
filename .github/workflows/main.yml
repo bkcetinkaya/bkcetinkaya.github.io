@@ -23,3 +23,11 @@ jobs:
 
     - name: Run Python file
       run: python app.py
+      
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "kaancetinkayasf@gmail.com"
+        git config --global user.name "bkcetinkaya"
+        git add .
+        git commit -m "Update data"
+        git push
