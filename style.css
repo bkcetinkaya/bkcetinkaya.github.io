@@ -97,6 +97,7 @@ a:hover{
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: space-evenly;
     
     font-size: medium;
     color: black;
@@ -108,5 +109,10 @@ a:hover{
     font-size: medium;
     color: black;
     padding: 15px;
+  
    
+}
+
+li{
+    margin: 15px;
 }
