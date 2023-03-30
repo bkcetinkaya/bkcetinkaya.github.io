@@ -130,7 +130,7 @@ def generate_articles_page(links):
             
                 """
 
-    html_file = open("Articles.html", "w")
+    html_file = open("articles.html", "w")
     html_file.write(html_string)
 
     html_file.close()
