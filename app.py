@@ -70,7 +70,7 @@ def create_article_page_string():
 
     articles = []
 
-    for root, dirs, files in os.walk("generated"):
+    for root, dirs, files in os.walk("Generated"):
         for file in files:
 
             path = os.path.join(root, file)
