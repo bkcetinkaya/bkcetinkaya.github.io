@@ -55,7 +55,7 @@ def create_article_html(text, file_name):
             
                 """
 
-    html_file = open("./Generated/" + file_name_without_suffix+".html", "w")
+    # html_file = open("./Generated/" + file_name_without_suffix+".html", "w")
     html_file.write(html_string)
 
     html_file.close()
