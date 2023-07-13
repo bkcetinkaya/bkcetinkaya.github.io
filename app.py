@@ -70,6 +70,7 @@ def create_article_page_string():
 
     articles = []
 
+#very important!! os.walk function is case sensitive, make sure it matches the directory name
     for root, dirs, files in os.walk("Generated"):
         for file in files:
 
@@ -81,7 +82,7 @@ def create_article_page_string():
             
 
 
-            html_string = f"""<li><a href="./generated/{file_name_without_suffix}.html">{file_name_without_suffix}</li></a>"""
+            html_string = f"""<li><a href="./Generated/{file_name_without_suffix}.html">{file_name_without_suffix}</li></a>"""
             
             
             articles.append(html_string)
