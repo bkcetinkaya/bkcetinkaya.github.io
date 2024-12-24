@@ -15,11 +15,12 @@ I designed the circuit using inductors and capacitors, created the schematic and
 The Schematic:
 
 
-![Schematic](/assets/Bandpass Schematic.png){: width="300" }
+![Schematic](/assets/Bandpass Schematic.png){: width="500" }
+
 The PCB Design:
 
 
-![PCB](/assets/Bandpass Pcb.png){: width="300" }
+![PCB](/assets/Bandpass Pcb.png){: width="500" }
 
 Even though soldering these incredibly small smd parts were too difficult, I have managed to solder them properly.
 
@@ -32,7 +33,7 @@ The S parameter shows that the filter is working as intended, having the lowest 
 
 The S parameter Test:
 
-![Sparameter](/assets/Bandpass Filter S11 and S21.png){: width="300" }
+![Sparameter](/assets/Bandpass Filter S11 and S21.png){: width="500" }
 
 To make sure, I connected a 1.3GHz signal and than a 433MHz signal to it to see if it is working properly, and saw that I now have a very low amplitude coming 
 from the 1.3GHz signal which was exactly what I have wanted:
@@ -40,8 +41,8 @@ from the 1.3GHz signal which was exactly what I have wanted:
 Output when 1.3GHz signal is applied:
 
 
-![1.3ghz](/assets/Bandpass Response with 100Mhz.png){: width="300" }
+![1.3ghz](/assets/Bandpass Response with 100Mhz.png){: width="500" }
 Output when 433MHzHz signal is applied:
 
 
-![433ghz](/assets/Bandpass Response with 433Mhz.png){: width="300" }
+![433ghz](/assets/Bandpass Response with 433Mhz.png){: width="500" }
