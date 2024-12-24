@@ -1,29 +1,22 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "433 Mhz Bandpass Filter"
 date:   2024-11-13 19:15:56 +0100
-categories: jekyll update
+categories: My Personal Engineering Projects
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
+In the laboratory of my University, I was building a project where I needed to capture 433Mhz signals and measure the amplitude of the signals, But there was a small problem, 
+the antenna that I was using, was picking up significant noise in the 1.3GHz range, which were affecting the overall amplitude of the received signal. 
 
-`YEAR-MONTH-DAY-title.MARKUP`
+How to solve this? Of course with a bandpass filter!
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+I designed the circuit using inductors and capacitors, created the schematic and also desinged the PCB as below:
 
-Jekyll also offers powerful support for code snippets:
+![The schematic](/assets/Bandpass Schematic.png)
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+![The PCB](/assets/Bandpass Pcb.png)
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+Even though soldering these incredibly small smd parts were too difficult, I have managed to solder them properly.
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+
+![The pcb looks like this now with sma connectors on both ends](/assets/Bandpass Image.jpeg)
