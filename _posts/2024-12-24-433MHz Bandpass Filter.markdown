@@ -12,11 +12,16 @@ How to solve this? Of course with a bandpass filter!
 
 I designed the circuit using inductors and capacitors, created the schematic and also desinged the PCB as below:
 
-![The schematic](/assets/Bandpass Schematic.png)
+The Schematic:
+
+{% image "Bandpass Schematic.png" width=600 height=600 %}
+
+The PCB Design:
 
 ![The PCB](/assets/Bandpass Pcb.png)
 
 Even though soldering these incredibly small smd parts were too difficult, I have managed to solder them properly.
 
+The pcb looks like this now with sma connectors on both ends:
 
 ![The pcb looks like this now with sma connectors on both ends](/assets/Bandpass Image.jpeg)
