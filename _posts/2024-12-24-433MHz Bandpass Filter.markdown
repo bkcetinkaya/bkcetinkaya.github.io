@@ -13,13 +13,13 @@ How to solve this? Of course with a bandpass filter!
 I designed the circuit using inductors and capacitors, created the schematic and also desinged the PCB as below:
 
 
-The Schematic:
+##The Schematic:
 
 
 ![Schematic](/assets/Bandpass Schematic.png){: width="500" }
 
 
-The PCB Design:
+##The PCB Design:
 
 
 ![PCB](/assets/Bandpass Pcb.png){: width="500" }
@@ -34,7 +34,7 @@ The pcb looks like this now with sma connectors on both ends:
 The S parameter shows that the filter is working as intended, having the lowest S11 point at around 400-450 Hz which is exactly what I needed.
 
 
-The S parameter Test:
+##The S parameter Test:
 
 ![Sparameter](/assets/Bandpass Filter S11 and S21.png){: width="500" }
 
@@ -42,13 +42,13 @@ To make sure, I connected a 1.3GHz signal and than a 433MHz signal to it to see 
 from the 1.3GHz signal which was exactly what I have wanted:
 
 
-Output when 1.3GHz signal is applied:
+##Output when 1.3GHz signal is applied:
 
 
 ![1.3ghz](/assets/Bandpass Response with 100Mhz.png){: width="500" }
 
 
-Output when 433MHzHz signal is applied:
+##Output when 433MHzHz signal is applied:
 
 
 ![433ghz](/assets/Bandpass Response with 433Mhz.png){: width="500" }
