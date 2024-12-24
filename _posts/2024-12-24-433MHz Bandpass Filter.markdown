@@ -18,10 +18,11 @@ The Schematic:
 
 The PCB Design:
 
-![The PCB](/assets/Bandpass Pcb.png)
+{% image "Bandpass Pcb.png" height=600 width=600 %}
+
 
 Even though soldering these incredibly small smd parts were too difficult, I have managed to solder them properly.
 
 The pcb looks like this now with sma connectors on both ends:
 
-![The pcb looks like this now with sma connectors on both ends](/assets/Bandpass Image.jpeg)
+{% image "Bandpass Image.jpeg" height=600 width=600 %}
