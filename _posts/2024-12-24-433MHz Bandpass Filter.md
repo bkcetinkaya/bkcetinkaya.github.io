@@ -2,7 +2,7 @@
 layout: post
 title:  "433 Mhz Bandpass Filter"
 date:   2024-12-24 19:15:56 +0100
-categories: My Personal Engineering Projects
+categories: Engineering Projects
 ---
 
 In the laboratory of my University, I was building a project where I needed to capture 433Mhz signals and measure the amplitude of the signals, But there was a small problem, 

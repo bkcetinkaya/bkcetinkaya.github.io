@@ -2,7 +2,7 @@
 layout: post
 title:  "Generating PWM Signals With STM32 Microcontrollers"
 date:   2025-02-25 19:56:56 +0100
-categories: My Personal Engineering Projects
+categories: Engineering Projects
 ---
 
 Generating PWM signals with STM32 microcontrollers is straightforward. Just follow the instructions below:
