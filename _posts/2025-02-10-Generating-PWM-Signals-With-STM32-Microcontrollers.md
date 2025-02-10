@@ -26,8 +26,10 @@ After activating the timer channel you set the pin to, configure the timer sourc
 ## Set Timer Parameters:
 
 
-Use the following formula to get your desired PWM frequency : Your clock frequency / ( (prescaler + 1) x (ARR + 1) )
-Duty cycle is: (Pulse / ARR) x 100
+Use the following formula to get your desired PWM frequency : 
+
+- Your clock frequency / ( (prescaler + 1) x (ARR + 1) ) 
+- Duty cycle is: (Pulse / ARR) x 100
 
 
 ![TIM](/assets/timer configuration.png){: width="500" }
