@@ -15,6 +15,7 @@ I chose the GPIO pin PA6 and set it to TIM_CH1, meaning Timer 3 and channel 1.
 
 ![GPIO](/assets/pin selection.png){: width="500" }
 
+
 ## Activate the timer channel and configure settings:
 
 After activating the timer channel you set the pin to, configure the timer source to "Internal Clock" (Unless you want to use an external clock.) then set the Channel1 to "PWM Generation CH1"
@@ -31,5 +32,16 @@ Duty cycle is: (Pulse / ARR) x 100
 
 ![TIM](/assets/timer configuration.png){: width="500" }
 
+
+
+## Example:
+
+My clock source is running at 72MHz, I set the values so I get 80 percent and 50 percent duty cycles. These are the results on my oscilloscope:
+
+
+![TIM](/assets/50duty.jpeg){: width="500" }
+
+
+![TIM](/assets/80duty.jpeg){: width="500" }
 
 
