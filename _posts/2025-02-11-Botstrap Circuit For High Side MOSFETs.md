@@ -17,7 +17,7 @@ Turning high side MOSFETs on and off (assuming you use an n-channel MOSFET to ac
 
 
 In the inital state, the BJT is turned on. The gate of the high side MOSFET is at 0V. Bootstrap capacitor charges to VCC through the diode.
-The load is connected to ground through the low-side MOSFET, so the source of the MOSFET is at ground potential.
+The load is connected to ground, so the source of the MOSFET is at ground potential.
 
 
 
