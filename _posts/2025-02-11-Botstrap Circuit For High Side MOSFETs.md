@@ -15,7 +15,7 @@ Turning high side MOSFETs on and off (assuming you use an n-channel MOSFET to ac
 # Inital Off State:
 
 
-![GPIO](/assets/bootstrap.gif){: width="500" }
+![GPIO](/assets/bootstrap.gif){: width="1000", height:"1000"}
 
 
 In the inital state, the BJT is turned on. The gate of the high side MOSFET is at 0V. Bootstrap capacitor charges to VCC through the diode.
