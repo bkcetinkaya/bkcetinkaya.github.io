@@ -12,15 +12,14 @@ Turning high side MOSFETs on and off (assuming you use an n-channel MOSFET to ac
 ## Schematic and the Working Principle:
 
 
-# Inital Off State:
 
-
-![GPIO](/assets/bootstrap.gif){: width="2000", height:"2000"}
+![GPIO](/assets/bootstrap.gif){: width="3000", height:"3000"}
 
 
 In the inital state, the BJT is turned on. The gate of the high side MOSFET is at 0V. Bootstrap capacitor charges to VCC through the diode.
-The load is connected to ground through the low-side MOSFET, so the source of the high-side MOSFET is at ground potential.
+The load is connected to ground through the low-side MOSFET, so the source of the MOSFET is at ground potential.
 
-# On State:
 
-Now the BJT is turned off, meaning we assume it is an open circuit. 
+
+When the BJT is turned off, capacitor discharges to the gate through the 1k resistor and turns the MOSFET on and we get 12V at the source terminal.
+Since the capacitor and the source terminal are connected, we get a total of 24V at the gate terminal which turns the MOSFET fully on. 
