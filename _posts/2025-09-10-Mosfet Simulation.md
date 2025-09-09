@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "MOSFET Simulation"
-date: 2025-10-09 20:06:56 +0100
+date: 2025-09-19 20:06:56 +0100
 categories: Engineering Projects
 ---
 <p>
