@@ -127,7 +127,7 @@ function draw() {
       if (gateV >= Vth) {
         y = map(gateV, Vth, 5, c.y0, 200);
         if (y <= 209) {
-          c.x += map(gateV, Vth, 5, 1, 20);
+          c.x += map(gateV, Vth, 5, 1, 10);
           if (c.x > 750) c.x = 140;
         }
       } else y = c.y0;
