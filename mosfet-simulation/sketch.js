@@ -15,7 +15,7 @@ let k = 5e-5;
 let resetButton;
 
 function preload() {
-  mosfet = loadImage('images/nMOSFET.png');
+  mosfet = loadImage('/images/nMOSFET.png');
 }
 
 function setup() {
@@ -146,7 +146,7 @@ function draw() {
     if (c.type === "e") {
       if (gateV >= Vth) {
         y = map(gateV, Vth, 5, c.y0, 200);
-        if (y == 200) {
+        if (y <= 202 && y >= 200) {
           c.x += map(gateV, Vth, 5, 1, 10);
           if (c.x > 750) c.x = 140;
         }
@@ -193,6 +193,9 @@ function draw() {
   fill(0);
   strokeWeight(0);
   text(": E-Field Lines", 900, 197);  
+  fill(0); 
+  textSize(14);
+  text(`${mouseX},${mouseY}`, 100, 110);
 }
 
 function drawEfieldLInes(gateV) {
