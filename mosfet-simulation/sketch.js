@@ -15,7 +15,7 @@ let k = 5e-5;
 let resetButton;
 
 function preload() {
-  mosfet = loadImage('images/nMOSFET.png');
+  mosfet = loadImage('nMOSFET.png');
 }
 
 function setup() {
