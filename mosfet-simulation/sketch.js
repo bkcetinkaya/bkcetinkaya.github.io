@@ -193,9 +193,7 @@ function draw() {
   fill(0);
   strokeWeight(0);
   text(": E-Field Lines", 900, 197);  
-  fill(0); 
-  textSize(14);
-  text(`${mouseX},${mouseY}`, 100, 110);
+
 }
 
 function drawEfieldLInes(gateV) {
