@@ -165,8 +165,8 @@ for (let c of dopedRegionCharges) {
       c.y = y;
 
       if (c.y <= 205 && Ids > 0) {
-        let speed = map(Ids*1.5, 0, 0.01, 0, 12);
-        c.x += speed;
+        let eSpeed = map(Ids*1.5, 0, 0.01, 0, 12);
+        c.x += eSpeed;
         if (c.x > 750) c.x = 140;
       }
     } else {
