@@ -1,5 +1,6 @@
 let mosfet;
-let slider;
+let gateVSlider;
+let sourceVSlider;
 let freeCharges = [];
 let fixedCharges = [];
 let dopedRegionCharges = [];
@@ -10,21 +11,27 @@ let gateXMin = 200, gateXMax = 600;
 let gateY = 190;
 
 let Ids = 0;
-let k = 5e-5;
+let k = 0.001;
+let Vds=0;
+let operationMode;
 
 let resetButton;
 
 function preload() {
-  mosfet = loadImage('images/nMOSFET.png');
+  mosfet = loadImage('/images/nMOSFET.png');
 }
 
 function setup() {
   createCanvas(1200, 800);
 
   // Slider für Gate-Spannung 0 → 5 V
-  slider = createSlider(0, 5000, 0);
-  slider.position(880, 50);
-  slider.style('width', '300px');
+  gateVSlider = createSlider(0, 5000, 0);
+  gateVSlider.position(880, 50);
+  gateVSlider.style('width', '300px');
+
+  sourceVSlider = createSlider(0, 9000, 0);
+  sourceVSlider.position(880, 100);
+  sourceVSlider.style('width', '300px');
 
   // Button zum Zurücksetzen der Ladungen
   resetButton = createButton('Reset');
@@ -63,7 +70,7 @@ function drawArrow2(x1, y1, x2, y2, col) {
 }
 
 function SetRandomChargePositions() {
-  slider.value(0);
+  gateVSlider.value(0);
   let xMin = 200, xMax = 600;
   let yMin = 200, yMax = 480;
   let xMinl = 4, xMaxl = 184, yMinl = 235, yMaxl = 480;
@@ -116,49 +123,64 @@ function draw() {
   background(255);
   image(mosfet, 0, 0, 800, 500);
 
-  let gateV = slider.value() / 1000; // V
+  let gateV = gateVSlider.value() / 1000; // V
+  let Vds = sourceVSlider.value() / 1000;
 
   drawEfieldLInes(gateV);
 
-  // Free charges
-  for (let c of freeCharges) {
-    let y;
-    if (c.type === "e") {
-      if (gateV >= Vth) {
-        y = map(gateV, Vth, 5, c.y0, 200);
-        if (y <= 209) {
-          c.x += map(gateV, Vth, 5, 1, 10);
-          if (c.x > 750) c.x = 140;
-        }
-      } else y = c.y0;
-      fill(0, 0, 255);
-    } else {
-      if (gateV >= Vth) y = map(gateV, Vth, 5, c.y0, 470);
-      else y = c.y0;
-      fill(255, 0, 0);
-    }
-    ellipse(c.x, y, 10, 10);
-  }
+// Free charges
+for (let c of freeCharges) {
+  let y;
+  if (c.type === "e") {
+    if (gateV >= Vth) {
+      // Erst hochziehen (Kanalbildung)
+      y = map(gateV, Vth, 5, c.y0, 200);
+      c.y = y;
 
-  // Doped region charges
-  for (let c of dopedRegionCharges) {
-    let y;
-    if (c.type === "e") {
-      if (gateV >= Vth) {
-        y = map(gateV, Vth, 5, c.y0, 200);
-        if (y <= 202 && y >= 200) {
-          c.x += map(gateV, Vth, 5, 1, 10);
-          if (c.x > 750) c.x = 140;
-        }
-      } else y = c.y0;
-      fill(0, 0, 255);
+      // Geschwindigkeit ~ Ids
+      if (c.y <= 205 && Ids > 0) {
+        let speed = map(Ids*1.5, 0, 0.01, 0, 12); // skaliere Ids in Pixel-Geschwindigkeit
+        c.x += speed;
+        if (c.x > 750) c.x = 140;
+      }
     } else {
-      if (gateV >= Vth) y = map(gateV, Vth, 5, c.y0, 470);
-      else y = c.y0;
-      fill(255, 0, 0);
+      y = c.y0;
+      c.y = y;
     }
-    ellipse(c.x, y, 10, 10);
+    fill(0, 0, 255);
+  } else {
+    y = gateV >= Vth ? map(gateV, Vth, 5, c.y0, 470) : c.y0;
+    c.y = y;
+    fill(255, 0, 0);
   }
+  ellipse(c.x, c.y, 10, 10);
+}
+
+// Doped region charges
+for (let c of dopedRegionCharges) {
+  let y;
+  if (c.type === "e") {
+    if (gateV >= Vth) {
+      y = map(gateV, Vth, 5, c.y0, 200);
+      c.y = y;
+
+      if (c.y <= 205 && Ids > 0) {
+        let speed = map(Ids*1.5, 0, 0.01, 0, 12);
+        c.x += speed;
+        if (c.x > 750) c.x = 140;
+      }
+    } else {
+      y = c.y0;
+      c.y = y;
+    }
+    fill(0, 0, 255);
+  } else {
+    y = gateV >= Vth ? map(gateV, Vth, 5, c.y0, 470) : c.y0;
+    c.y = y;
+    fill(255, 0, 0);
+  }
+  ellipse(c.x, c.y, 10, 10);
+}
 
   // Fixed charges
   for (let c of fixedCharges) {
@@ -167,33 +189,69 @@ function draw() {
   }
 
   // Calculate Ids
-  Ids = gateV >= Vth ? k * Math.pow(gateV - Vth, 2) : 0;
+ 
+
+  if (gateV >= Vth) {
+    const Vov = gateV - Vth;
+    if (Vds < Vov) {
+      // linear region
+      Ids = k * (Vov * Vds - 0.5 * Vds * Vds);
+    } else if(Vds > Vov) {
+      // saturation
+      Ids = 0.5 * k * Vov * Vov;
+    }
+  }
+
+
+  if(gateV < Vth){
+    operationMode = "Cut Off";
+  }else if(gateV >= Vth && Vds < gateV - Vth){
+    operationMode = "Linear";
+  }else if(gateV >= Vth && Vds >= gateV - Vth){
+    operationMode = "Saturation";
+  }
+
 
   // UI
   noStroke();
   fill(0);
-  textSize(24);
+  textSize(22);
   text(`Gate voltage: ${gateV.toFixed(2)} V`, 880, 30);
+  textSize(22);
+  text(`Vds: ${Vds.toFixed(2)} V`, 880, 95);
 
   fill(255, 0, 0);
-  ellipse(890, 97, 10, 10);
+  ellipse(890, 137, 10, 10);
   fill(0, 0, 255);
-  ellipse(890, 123, 10, 10);
+  ellipse(890, 163, 10, 10);
 
   fill(0);
   textSize(18);
-  text(": holes", 902, 101);
-  text(": electrons", 902, 129);
+  text(": holes", 902, 141);
+  text(": electrons", 902, 169);
+
+
 
   textSize(18);
-  text("Ids :" + `${nf(Ids * 1e6,1,0)}`+"µA", 888, 160);
+  text("Ids :" + ` ${nf(Ids * 1e3,1,1)}`+" mA", 888, 200);
 
-  drawArrow2(888,180,888,220,color(0, 0, 255));
+  textSize(18);
+  text("(Vgs - Vth) :" + ` ${nf(gateV - Vth ,1,1)}`+" V", 888, 230);
+
+ 
+
+  drawArrow2(888,250,888,280,color(0, 0, 255));
   textSize(18);
   fill(0);
   strokeWeight(0);
-  text(": E-Field Lines", 900, 197);  
+  text(": E-Field Lines", 900, 270);  
+  
 
+  textSize(19);
+  text("Operation Mode: "+`${operationMode}` , 880, 310);
+
+  textSize(32);
+  text("n-FET" , 375, 545);
 }
 
 function drawEfieldLInes(gateV) {
