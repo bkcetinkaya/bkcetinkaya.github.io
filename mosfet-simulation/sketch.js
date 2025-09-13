@@ -18,7 +18,7 @@ let operationMode;
 let resetButton;
 
 function preload() {
-  mosfet = loadImage('/images/nMOSFET.png');
+  mosfet = loadImage('images/nMOSFET.png');
 }
 
 function setup() {
