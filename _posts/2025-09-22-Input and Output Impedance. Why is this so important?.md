@@ -13,6 +13,17 @@ and that is something that you dont want.
 The voltage divider formula is as follows: Vout = Vsource * (R2/R1+R2). And if you do the calculations you may see that if R2 closer or smaller than R1, your Vout will be a fraction of Vsource. Take a look at the Simulation
 in I setup in LTspice.
 
-## First Case (R2 is smaller or equal to R1)
+### First Case (R2 is smaller or equal to R1)
 
 ![Schematic](/assets/1k-1k.png){: width="500" }
+
+As you can see, of R2=R1=1K, you get 2.5V at the input of the amplifier stage. You basically waste energy for no reason.
+
+### Second Case (R2 is significantly larger than R1)
+
+![Schematic](/assets/1k-100k.png){: width="500" }
+
+In this case, you get a voltage very close to the Source voltage which is visible in the schematic. You get 4.95V at the input of the amplifier stage.
+
+Therefore, one must pay attention to the input and output impedances of the circuits. If the signal source has a low output impedance, the amplifier should have a high input impedance.
+
