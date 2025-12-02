@@ -17,10 +17,17 @@ Lets look at two examples, one where we dont have a decoupling capacitor, and on
 ## Without a Decoupling Capacitor:
 
 
+We connect power supply to our microcontroller, represented by a current source that requires 100mA when its turned on. The power line connecting the supply to the circuit has some inductance at nH level. Even if it seems small, it effects the circuits function significantly. See the schematic and the simulation results. The voltage at the pin of the current source oscillates a lot before it can stabilize at 2V, and it takes microseconds to stabilize, which is huge for a 100 Mhz microcontroller. This is caused by the inductance of the wiring, it resits sudden current changes. The power source wont be able to supply enough current in time, therefore microcontroller will malfunction. 
+
 ![Schematic](/assets/Withoutdcschematic.png){: width="500" }
 ![Schematic](/assets/Withoutdc.png){: width="500" }
 
 
-We connect power supply to our microcontroller, represented by a current source that requires 100mA when its turned on. The power line connecting the supply to the circuit has some inductance at nH level. Even if it seems small, it effects the circuits function significantly. See the schematic and the simulation results. The voltage at the pin of the current source oscillates a lot before it can stabilize at 2V, and it takes microseconds to stabilize, which is huge for a 100 Mhz microcontroller. The power source wont be able to supply enough current in time, therefore microcontroller will malfunction. 
+## With a Decoupling Capacitor:
+
+Only difference now is we connect a capacitor between the power supply and the ground, differences are huge. When a sudden current is needed, capacitor can supply this current almost instanteosuly for a short amount of time until the power supply can start delivering current at required speed. See the differences in the simulation results, oscillations at the microcontroller terminal is almost non-existent.
+
+![Schematic](/assets/withdcschmatic.png){: width="500" }
+![Schematic](/assets/withdc.png){: width="500" }
 
 
