@@ -10,3 +10,4 @@ Determine the voltage divider resistors from: VE + 0.7
 
 
 ![Common Emitter](/assets/av5.png){: width="600" }
+![Common Emitter](/assets/image.png){: width="600" }
